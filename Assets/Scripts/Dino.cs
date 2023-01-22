@@ -7,13 +7,17 @@ public class Dino : MonoBehaviour
     private Rigidbody2D rb;
     public float forcaPulo = 600;
 
+    public LayerMask layerFloor;
+    private bool verifyFloor;
+    public float distanceFloor = 3f;
+
     void Start()
     {
        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -23,7 +27,10 @@ public class Dino : MonoBehaviour
     }
     private void Pular()
     {
-        rb.AddForce(Vector2.up * forcaPulo);
+        if (verifyFloor)
+        {
+            rb.AddForce(Vector2.up * forcaPulo);
+        }
     }
     private void Walk()
     {
@@ -42,5 +49,9 @@ public class Dino : MonoBehaviour
 
         transform.Translate(move);
         */
+    }
+    private void FixedUpdate()
+    {
+        verifyFloor = Physics2D.Raycast(transform.position,Vector2.down, distanceFloor, layerFloor);
     }
 }
