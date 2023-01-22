@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 1210747034}
   - component: {fileID: 1210747030}
   - component: {fileID: 1210747033}
+  - component: {fileID: 1210747035}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -609,6 +610,26 @@ MonoBehaviour:
     m_Bits: 64
   distanceFloor: 0.6
   scoreText: {fileID: 703088547}
+--- !u!95 &1210747035
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210747029}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 95472e0825b8ad34f9c0e57eaf927d3a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1472980086
 GameObject:
   m_ObjectHideFlags: 0
