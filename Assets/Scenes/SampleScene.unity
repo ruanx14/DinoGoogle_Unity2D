@@ -207,6 +207,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1196308490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1196308492}
+  - component: {fileID: 1196308491}
+  m_Layer: 0
+  m_Name: CactiSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1196308491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196308490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fe8be1f5fc3844e86f6336d973f309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cactisThinPrefabs:
+  - {fileID: 1492524369101493867, guid: 2195bec0f8aaba9448c4267b48edc57c, type: 3}
+  - {fileID: 1492524369101493867, guid: 1a2b1f0b282ca84458ce6852084ad75e, type: 3}
+  - {fileID: 1492524369101493867, guid: fdcd6382bccb8234680d22e7e638a159, type: 3}
+  initialDelay: 4
+  delayBetween: 2
+--- !u!4 &1196308492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196308490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1210747029
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,9 +267,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1210747032}
   - component: {fileID: 1210747031}
+  - component: {fileID: 1210747034}
   - component: {fileID: 1210747030}
   - component: {fileID: 1210747033}
-  - component: {fileID: 1210747034}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -308,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210747029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 0.53, z: 0}
+  m_LocalPosition: {x: -0.07, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -373,6 +423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forcaPulo: 600
+  layerFloor:
+    serializedVersion: 2
+    m_Bits: 64
+  distanceFloor: 0.6
 --- !u!1 &1715734650
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +438,8 @@ GameObject:
   - component: {fileID: 1715734652}
   - component: {fileID: 1715734651}
   - component: {fileID: 1715734653}
-  m_Layer: 0
+  - component: {fileID: 1715734654}
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715734650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.5, y: -0.29, z: 0}
+  m_LocalPosition: {x: 9.5, y: -0.5312, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -484,3 +539,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 24.41, y: 0.1796664}
   m_EdgeRadius: 0
+--- !u!114 &1715734654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715734650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948abbd710034f9429144a3a032776d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: -1, y: 0}
+  speed: 3
