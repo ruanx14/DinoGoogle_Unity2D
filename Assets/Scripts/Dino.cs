@@ -18,14 +18,23 @@ public class Dino : MonoBehaviour
 
     //score na tela
     private float score;
+    private float highscore;    
     public Text scoreText;
+    public Text highscoreText;
 
     //animator walking + turn down
     public Animator animatorComponent;
 
+    //audios sources
+    public AudioSource jumpAudioSource;
+    public AudioSource hundredScoreAudioSource;
+    public AudioSource endGameAudioSource;
+
     private void Start()
     {
        rb = GetComponent<Rigidbody2D>();
+       highscore = PlayerPrefs.GetFloat("highscore");
+       highscoreText.text = $"HI {Mathf.FloorToInt(PlayerPrefs.GetFloat("highscore"))}";
     }
 
     // Update is called once per frame
@@ -33,8 +42,12 @@ public class Dino : MonoBehaviour
     {
         //score = int.Parse(Time.time.ToString());
         //score = Mathf.FloorToInt(Time.time);
-        score += Time.deltaTime * 3;
-        scoreText.text = "Score: " + Mathf.FloorToInt(score).ToString();
+        score += Time.deltaTime * 10;
+        scoreText.text = Mathf.FloorToInt(score).ToString();
+        if (Mathf.FloorToInt(score) > 0 && Mathf.FloorToInt(score) % 100 == 0 && !hundredScoreAudioSource.isPlaying)
+        {
+            hundredScoreAudioSource.Play();
+        }
 
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -53,6 +66,7 @@ public class Dino : MonoBehaviour
         if (verifyFloor)
         {
             rb.AddForce(Vector2.up * forcaPulo);
+            jumpAudioSource.Play();
         }
     }
     private void TurnDown()
@@ -67,6 +81,12 @@ public class Dino : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            if(score>highscore)
+            {
+                highscore = score;
+                PlayerPrefs.SetFloat("highscore", highscore);
+            }
+            endGameAudioSource.Play();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
