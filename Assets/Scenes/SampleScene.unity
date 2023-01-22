@@ -610,6 +610,7 @@ MonoBehaviour:
     m_Bits: 64
   distanceFloor: 0.6
   scoreText: {fileID: 703088547}
+  animatorComponent: {fileID: 1210747035}
 --- !u!95 &1210747035
 Animator:
   serializedVersion: 4

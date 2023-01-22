@@ -6,18 +6,24 @@ using UnityEngine.UI;
 
 public class Dino : MonoBehaviour
 {
+    //Ruan Barroso
+    //pulo
     private Rigidbody2D rb;
     public float forcaPulo = 600;
 
+    //checando o chao
     public LayerMask layerFloor;
     private bool verifyFloor;
     public float distanceFloor = 3f;
 
-
+    //score na tela
     private float score;
     public Text scoreText;
 
-    void Start()
+    //animator walking + turn down
+    public Animator animatorComponent;
+
+    private void Start()
     {
        rb = GetComponent<Rigidbody2D>();
     }
@@ -34,6 +40,13 @@ public class Dino : MonoBehaviour
         {
             Pular();
         }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            TurnDown();
+        }else if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            animatorComponent.SetBool("Walking", false);
+        }
     }
     private void Pular()
     {
@@ -41,6 +54,10 @@ public class Dino : MonoBehaviour
         {
             rb.AddForce(Vector2.up * forcaPulo);
         }
+    }
+    private void TurnDown()
+    {
+        animatorComponent.SetBool("Walking", true);
     }
     private void FixedUpdate()
     {
