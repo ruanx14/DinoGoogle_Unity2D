@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Dino : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class Dino : MonoBehaviour
     private bool verifyFloor;
     public float distanceFloor = 3f;
 
+
+    private float score;
+    public Text scoreText;
+
     void Start()
     {
        rb = GetComponent<Rigidbody2D>();
@@ -19,11 +25,15 @@ public class Dino : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //score = int.Parse(Time.time.ToString());
+        //score = Mathf.FloorToInt(Time.time);
+        score += Time.deltaTime * 3;
+        scoreText.text = "Score: " + Mathf.FloorToInt(score).ToString();
+
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
             Pular();
         }
-            Walk();
     }
     private void Pular()
     {
@@ -32,26 +42,15 @@ public class Dino : MonoBehaviour
             rb.AddForce(Vector2.up * forcaPulo);
         }
     }
-    private void Walk()
-    {
-        float h = Input.GetAxis("Horizontal");
-
-        /*
-        rb.velocity= rb.velocity * h;
-        rb.velocity = new Vector2(
-            h * 10f,
-            rb.velocity.y
-        );
-        */
-
-        /*
-        Vector2 move = new Vector2(h * 1f * Time.deltaTime, 0);
-
-        transform.Translate(move);
-        */
-    }
     private void FixedUpdate()
     {
         verifyFloor = Physics2D.Raycast(transform.position,Vector2.down, distanceFloor, layerFloor);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

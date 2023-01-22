@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
-    public float diferencaX, minX;
+    private float diferencaX = 25f, minX = -13f;
     private void Start()
     {
         
