@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 1196308492}
   - component: {fileID: 1196308491}
   m_Layer: 0
-  m_Name: CactiSpawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -758,8 +758,12 @@ MonoBehaviour:
   - {fileID: 1492524369101493867, guid: 2195bec0f8aaba9448c4267b48edc57c, type: 3}
   - {fileID: 1492524369101493867, guid: 1a2b1f0b282ca84458ce6852084ad75e, type: 3}
   - {fileID: 1492524369101493867, guid: fdcd6382bccb8234680d22e7e638a159, type: 3}
+  dinoFlyPrefab: {fileID: 8958846789923057976, guid: a26a1417ec9bb044388212c10cba3fae, type: 3}
   initialDelay: 1
-  delayBetween: 2
+  delayBetween: 1
+  dinoMinX: 0
+  dinoMaxX: 2
+  dino: {fileID: 1210747034}
 --- !u!4 &1196308492
 Transform:
   m_ObjectHideFlags: 0
@@ -790,7 +794,7 @@ GameObject:
   - component: {fileID: 1210747033}
   - component: {fileID: 1210747035}
   m_Layer: 0
-  m_Name: Dino
+  m_Name: DinoPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -946,6 +950,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   distanceFloor: 0.6
+  score: 0
   scoreText: {fileID: 703088547}
   highscoreText: {fileID: 271038345}
   animatorComponent: {fileID: 1210747035}

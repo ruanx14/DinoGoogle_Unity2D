@@ -17,7 +17,7 @@ public class Dino : MonoBehaviour
     public float distanceFloor = 3f;
 
     //score na tela
-    private float score;
+    public float score;
     private float highscore;    
     public Text scoreText;
     public Text highscoreText;
