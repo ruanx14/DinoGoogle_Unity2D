@@ -1,14 +1,18 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveCacti : MonoBehaviour
 {
     public Vector2 direction;
-    public float speed;
 
+    private Game gameScript;
+    private void Start()
+    {
+        gameScript = GameObject.Find("Game").GetComponent<Game>();
+    }
     private void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * gameScript.speed * Time.deltaTime);
     }
 }
