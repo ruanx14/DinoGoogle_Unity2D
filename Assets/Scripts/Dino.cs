@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Dino : MonoBehaviour
@@ -29,6 +28,9 @@ public class Dino : MonoBehaviour
     public AudioSource jumpAudioSource;
     public AudioSource hundredScoreAudioSource;
     public AudioSource endGameAudioSource;
+
+    //gameover menu
+    public GameObject restartButton;
 
     private void Start()
     {
@@ -87,7 +89,8 @@ public class Dino : MonoBehaviour
                 PlayerPrefs.SetFloat("highscore", highscore);
             }
             endGameAudioSource.Play();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            restartButton.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

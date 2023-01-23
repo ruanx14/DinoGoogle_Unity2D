@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
             if (createEnemyController)
             {
                 int controller = Random.Range(1, 7);
-                if (dino.score >= 10 && controller <= 2)
+                if (dino.score >= 300 && controller <= 2)
                 {
                     var positionRandomY = Random.Range(dinoFlyMinY, dinoFlyMaxY);
                     Vector3 position = new Vector3(
